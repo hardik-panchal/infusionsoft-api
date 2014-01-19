@@ -9,7 +9,7 @@
  */
 session_start();
 error_reporting(0);
-//error_reporting(E_ALL && ~E_NOTICE);
+
 
 # DB informaitons
 define('DB_HOST', 'localhost');

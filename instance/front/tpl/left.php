@@ -18,8 +18,8 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="<?php l('drivers') ?>">Infusionsoft API Keys</a></li>
-                    <li><a href="<?php l('dispatchers') ?>">Fastway Courier API Keys</a></li>
+                    <li><a href="<?php l('infusionsoft_keys') ?>">Infusionsoft API Keys</a></li>
+                    <li><a href="<?php l('fastway_keys') ?>">Fastway Courier API Keys</a></li>
                 </ul>
             </li>
         </ul>

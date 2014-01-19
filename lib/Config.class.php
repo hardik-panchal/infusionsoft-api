@@ -18,39 +18,21 @@ class Config {
      */
     public static $_vars = array();
 
-
     # constructor
 
     public function __construct() {
         
     }
 
-    public static function GetValue($key) {
-        return qs("SELECT * FROM config WHERE `key` = '" . $key . "'");
+    public static function getData($keyArray) {
+        $fields = ("'" . implode("','", $keyArray) . "'");
+        return q("select * from config where `key` IN ({$fields})");
     }
 
-    public static function GetKey() {
-        return q("SELECT * FROM config");
-    }
-
-    public static function AddValue($key, $val) {
-        return q("INSERT INTO config(`key`,`value`,`created_at`,`modified_at`) VALUES('" . $key . "','" . $val . "','" . date('Y-m-d H:i:s') . "','" . date('Y-m-d H:i:s') . "')");
-    }
-
-    public static function UpdateValue($key, $val) {
-        return q("UPDATE config SET value = '" . $val . "',modified_at = '" . date('Y-m-d H:i:s') . "' WHERE `key` = '" . $key . "'");
-    }
-
-    public static function GetEmailValue($key) {
-        return q("SELECT * FROM config WHERE `key` = '" . $key . "'");
-    }
-
-    public static function AddEmailValue($key, $val) {
-        return q("INSERT INTO config(`key`,`value`,`created_at`,`modified_at`) VALUES('" . $key . "','" . $val . "','" . date('Y-m-d H:i:s') . "','" . date('Y-m-d H:i:s') . "')");
-    }
-
-    public static function UpdateEmailValue($key, $val) {
-        return q("UPDATE config SET value = '" . $val . "',modified_at = '" . date('Y-m-d H:i:s') . "' WHERE `key` = '" . $key . "'");
+    public static function updateDate($valueArray) {
+        foreach ($valueArray as $key => $value) {
+            qu("config", array('value' => $value), " `key` = '{$key}' ");
+        }
     }
 
 }
