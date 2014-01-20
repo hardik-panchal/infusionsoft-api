@@ -14,6 +14,9 @@
     Use: ben@bepure.co.nz
     Incredible22
   
+    1. http://help.infusionsoft.com/developers/tables : 
+    2. http://help.infusionsoft.com/api-docs/dataservice#query
+  
     API KEY: 7b6e7bf7278e41be52eda569b9f563bf
 
     Then we want this information pushed into Fastway, please use the details below...
