@@ -263,3 +263,7 @@ function _errors_off() {
 function clearNumber($number) {
     return str_replace(array("-", "(", ")", " "), array("", "", "", ""), $number);
 }
+
+function formatDate($string) {
+    return date("Y-m-d H:i:s", strtotime($string));
+}
