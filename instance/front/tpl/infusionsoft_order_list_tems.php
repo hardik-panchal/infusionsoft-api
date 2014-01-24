@@ -7,7 +7,7 @@ $items = q($itemQuery);
         <span class="label label-danger">No Items</span>
     <?php else: ?>
         <?php foreach ($items as $each_item): ?>
-            <span class="label label-success" data-toggle="tooltip" title="<?php print $each_item['ItemDescription']?>"><?php print $each_item['ItemName'] ?></span>
+            <span class="label label-success" data-toggle="tooltip" title="<?php print $each_item['ItemDescription'] ?>"><?php print $each_item['ItemName'] ?></span>
             <span class="label label-warning">Qty - <?php print $each_item['Qty'] ?></span>
             <div class="clearfix" style="height:2px">&nbsp;</div>
         <?php endforeach; ?>
