@@ -269,7 +269,7 @@ function formatDate($string) {
 }
 
 function _l($string){
-    print "<div style='padding:5px;background-color:#FFFFCC;font-family:verdana;border:1px solid #DADADA;border-radius:5px;margin:4px;'>";
+    print "<div style='padding:8px;background-color:#FFFFCC;font-family:verdana;border:1px solid #DADADA;border-radius:5px;margin:4px;font-size:12px;font-weight:bold'>";
     print $string;
     print "</div>";
 }
