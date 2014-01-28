@@ -38,7 +38,7 @@ $infusionsoft_order = q("select * from infusionsoft_orders  where pushedFastLabe
 
 _l('InfusionSoft Orders - ' . count($infusionsoft_order) . " Found ");
 
-if (!empty($infusionsoft_order)) {
+if (!empty($infusionsoft_order) ) {
     foreach ($infusionsoft_order as $each_order) {
         $data = array();
 
@@ -100,6 +100,8 @@ if (!empty($infusionsoft_order)) {
     _l('No Orders Found For Import');
 }
 
+$apiFL->closeManifest($manifest_id,$user_id);
+_l("Manifest Closed");
 
 _l('Import Complete');
 

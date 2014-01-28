@@ -39,6 +39,14 @@ Class apiFastLabel extends apiCore {
         return json_decode($mainfest, true);
     }
 
+    public function closeManifest($manifest_id, $user_id) {
+        $this->apiEndpoint = 'closemanifest';
+        $this->params['UserID'] = $user_id;
+        $this->params['ManifestID'] = $manifest_id;
+        $url = $this->prepareApiUrl();
+        $this->doCall($url);
+    }
+
     public function createConsignment($userID, $data) {
 
         /*
@@ -69,7 +77,6 @@ Class apiFastLabel extends apiCore {
             $this->params["Items[{$index}].Quantity"] = $each_item['Quantity'];
             $this->params["Items[{$index}].Packaging"] = $each_item['Packaging'];
             $this->params["Items[{$index}].Reference"] = $each_item['Reference'];
-            
         }
 
         $url = $this->prepareApiUrl();
