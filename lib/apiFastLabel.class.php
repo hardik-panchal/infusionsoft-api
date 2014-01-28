@@ -33,7 +33,7 @@ Class apiFastLabel extends apiCore {
     public function getOpenManifest($userID) {
         $this->apiEndpoint = 'getopenmanifest';
         $this->params['UserID'] = $userID;
-        $this->params['AutoImport'] = 'false';
+        $this->params['AutoImport'] = 'true';
         $url = $this->prepareApiUrl();
         $mainfest = $this->doCall($url);
         return json_decode($mainfest, true);
@@ -57,15 +57,18 @@ Class apiFastLabel extends apiCore {
         $this->apiEndpoint = 'addconsignment';
         $this->params['UserID'] = $userID;
         $this->params['CompanyName'] = $data['CompanyName'];
+        $this->params['ManifestID'] = $data['ManifestID'];
         $this->params['Address1'] = $data['Address1'];
         $this->params['Suburb'] = $data['Suburb'];
         $this->params['Postcode'] = $data['Postcode'];
+        $this->params['ContactPhone'] = $data['ContactPhone'];
         foreach ($data['items'] as $index => $each_item) {
             if ($each_item['Weight']) {
                 $this->params["Items[{$index}].Weight"] = $each_item['Weight'];
             }
             $this->params["Items[{$index}].Quantity"] = $each_item['Quantity'];
             $this->params["Items[{$index}].Packaging"] = $each_item['Packaging'];
+            $this->params["Items[{$index}].Reference"] = $each_item['Reference'];
             
         }
 

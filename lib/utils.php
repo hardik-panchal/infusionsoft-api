@@ -267,3 +267,9 @@ function clearNumber($number) {
 function formatDate($string) {
     return date("Y-m-d H:i:s", strtotime($string));
 }
+
+function _l($string){
+    print "<div style='padding:5px;background-color:#FFFFCC;font-family:verdana;border:1px solid #DADADA;border-radius:5px;margin:4px;'>";
+    print $string;
+    print "</div>";
+}
