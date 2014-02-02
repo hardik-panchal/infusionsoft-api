@@ -38,11 +38,17 @@ $infusionsoft_order = q("select * from infusionsoft_orders  where pushedFastLabe
 
 _l('InfusionSoft Orders - ' . count($infusionsoft_order) . " Found ");
 
-if (!empty($infusionsoft_order) ) {
+if (!empty($infusionsoft_order)) {
     foreach ($infusionsoft_order as $each_order) {
         $data = array();
 
         _l("Importing Order: {$each_order['id']} | {$each_order['ShipFirstName']} {$each_order['ShipLastName']}");
+        qu('infusionsoft_orders', array('pushedFastLabel' => '1'), " id = '{$each_order['id']}' ");
+        if ($each_order['invoice_status'] == '0') {
+            _l("Invoice is not paid" . $data['error']);
+            qu('infusionsoft_orders', array('fastLabel_CostExGst' => 'Invoice is not paid'), " id = '{$each_order['id']}' ");
+            continue;
+        }
 
         $data['ManifestID'] = $manifest_id;
         $data['CompanyName'] = $each_order['ShipFirstName'] . " " . $each_order['ShipLastName'];
@@ -64,9 +70,6 @@ if (!empty($infusionsoft_order) ) {
         }
 
 
-        d($data);
-
-        qu('infusionsoft_orders', array('pushedFastLabel' => '1'), " id = '{$each_order['id']}' ");
 
         _l("Request sent to FastWay:");
         $data = $apiFL->createConsignment($user_id, $data);
@@ -85,22 +88,21 @@ if (!empty($infusionsoft_order) ) {
             $update_array['fastLabel_CostExGst'] = $data['result']['CostExGst'];
             $update_array['fastLabel_LabelColour'] = $data['result']['LabelColour'];
             $update_array['fastLabel_DestinationRFCode'] = $data['result']['DestinationRFCode'];
-            
+
             d($update_array);
-            
+
             qu("infusionsoft_orders", $update_array, " id = '{$each_order['id']}' ");
 
             foreach ($items as $index => $each_item) {
                 qu("infusionsoft_order_items", array('fastway_label_no' => $data['result']['LabelNumbers'][$index]), " id = '{$each_item['id']}' ");
             }
         }
-        d($data);
     }
 } else {
     _l('No Orders Found For Import');
 }
 
-$apiFL->closeManifest($manifest_id,$user_id);
+$apiFL->closeManifest($manifest_id, $user_id);
 _l("Manifest Closed");
 
 _l('Import Complete');
