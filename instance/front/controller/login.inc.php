@@ -17,7 +17,7 @@ if (!isset($_SESSION['user'])) {
         if (User::doLogin($user_name, $password)) {
             User::initUserSession($user_name);
             //_R(lr('home'));
-            _R(lr('infusionsoft_keys'));
+            _R(lr('infusionsoft_order'));
         } else {
             $error = "Invalid Credentials";
         }
@@ -25,7 +25,7 @@ if (!isset($_SESSION['user'])) {
     }
     $no_visible_elements = true;
 } else {
-    _R(lr('infusionsoft_keys'));
+    _R(lr('infusionsoft_order'));
 }
 _cg("page_title", "Login");
 ?>
