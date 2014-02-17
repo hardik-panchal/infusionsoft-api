@@ -71,8 +71,6 @@
 
         <script src="<?php print _MEDIA_URL ?>bootstrap/js/bootstrap.min.js"></script>
 
-        
-
         <?php if ($error): ?>
             <script type="text/javascript">
                 $(document).ready(function(){

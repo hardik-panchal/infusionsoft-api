@@ -268,8 +268,42 @@ function formatDate($string) {
     return date("Y-m-d H:i:s", strtotime($string));
 }
 
-function _l($string){
+function _l($string) {
     print "<div style='padding:8px;background-color:#FFFFCC;font-family:verdana;border:1px solid #DADADA;border-radius:5px;margin:4px;font-size:12px;font-weight:bold'>";
     print $string;
     print "</div>";
+}
+
+/**
+ * 
+ 
+  Satchel DL - for One bottle of product
+  Satchel A5 - for 2 bottles of product
+  Satchel A4 - for 4 bottles of product
+
+  parcel                                    1
+  Satchel a2                            4
+  Satchel a3                            5
+  Satchel a4                            6
+  Satchel a5                            7
+  Satchel dl                             9
+
+ * 
+ * @param type $qty
+ * @return string
+ */
+function _resolvePackaging($qty) {
+    $label = "9";
+    switch ($qty) {
+        case "1":
+            $label = "9";
+            break;
+        case "2":
+            $label = "7";
+            break;
+        case "4":
+            $label = "6";
+            break;
+    }
+    return $label;
 }

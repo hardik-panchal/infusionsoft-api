@@ -36,6 +36,31 @@
 
  
  * 
+ * www.fastwayintegration.info. 
+
+Dns Zone check is enabled.
++===================================+
+| New Account Info                  |
++===================================+
+| Domain: fastwayintegration.info
+| Ip: 97.79.238.112 (n)
+| HasCgi: y
+| UserName: fastwayi
+| PassWord: Integration123
+| CpanelMod: x3
+| HomeRoot: /home
+| Quota: unlimited Meg
+| NameServer1: ns1.gvodns.com
+| NameServer2: ns2.gvodns.com
+| NameServer3: 
+| NameServer4: 
+| Contact Email: ben@bepure.co.nz
+| Package: default
+| Feature List: default
+| Language: en
++====================
+ * 
+ * 
  * 
  * 
  * 

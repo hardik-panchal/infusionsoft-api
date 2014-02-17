@@ -4,6 +4,28 @@
  *  Scheduler file for fastway to push the 
  *  infusionsoft order into fastway > fastlabel
  * 
+ * Satchel DL - for One bottle of product
+  Satchel A5 - for 2 bottles of product
+  Satchel A4 - for 4 bottles of product
+
+  Then a pink label for a local parcel
+  A red label for a national parcel
+  Then add a grey for rural.
+
+  The below information is from Tim Rumble (fastway)
+  There is a packaging ID that you can enter into the add consignment call.
+
+  Below is the type and id
+
+  Packaging type                  ID
+  parcel                                    1
+  Satchel a2                            4
+  Satchel a3                            5
+  Satchel a4                            6
+  Satchel a5                            7
+  Satchel dl                             9
+ * 
+ * 
  *  @author Hardik Panchal<hardikpanchal469@gmail.com>
  *  @since January 24, 2014
  * 
@@ -66,7 +88,8 @@ if (!empty($infusionsoft_order)) {
 
         _l('Order Items ' . count($items));
         foreach ($items as $each_item) {
-            $data['items'][] = array('Reference' => $each_item['ItemName'], "Weight" => "1", "Quantity" => $each_item['Qty'], "Packaging" => 1);
+            $packaging = _resolvePackaging($each_item['Qty']);
+            $data['items'][] = array('Reference' => $each_item['ItemName'], "Weight" => "1", "Quantity" => $each_item['Qty'], "Packaging" => $packaging);
         }
 
 
