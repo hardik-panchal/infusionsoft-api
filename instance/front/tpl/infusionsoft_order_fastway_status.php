@@ -31,5 +31,6 @@
         <span class="label label-warning"><?php print $each_order['fastLabel_CostExGst'] ?></span>
     <?php endif; ?>
 <?php else: ?>
-    <span class="label label-danger">Scheduled</span>
+<!--    <span class="label label-danger">Scheduled</span>-->
+    <span class="label label-success pointer" onclick="doPushToFastLabel('<?php print $each_order['id'] ?>')">Push to FastLabel</span>
 <?php endif; ?>

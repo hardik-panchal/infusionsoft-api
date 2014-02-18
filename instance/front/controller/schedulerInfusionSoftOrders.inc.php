@@ -10,8 +10,13 @@
  * invoiceid, status, amount
  * 
  */
+_errors_on();
+set_time_limit(0);
+
 include "initInfusionSoft.php";
+
 _l("Importing Orders");
+
 $qry = array('Id' => '%');
 
 // update orders into db
@@ -40,14 +45,19 @@ if ($remaining_orders <= 0) {
     _l("No orders needed to import!!");
     die;
 }
-
+$page_size = 1000;
 $start_order = $currentOrders + 1;
-$page = ceil($currentOrders / 50);
+$page = ceil($currentOrders / $page_size);
+if($remaining_orders < $page_size){
+    $page_size = $remaining_orders;
+    $page = 1;
+}
 
-_l("Importing 50 orders from {$start_order} ");
+
+_l("Importing {$page_size} orders from {$start_order} ");
 
 $qry = array('Id' => '%');
-$data = $app->dsQuery("Job", "50", $page, $qry, array(
+$data = $app->dsQuery("Job", $page_size, $page, $qry, array(
     'Id',
     'JobTitle',
     'ContactId',
@@ -73,7 +83,6 @@ $data = $app->dsQuery("Job", "50", $page, $qry, array(
     'ShipCountry',));
 
 _l(" Found " . count($data) . " Orders ");
-
 foreach ($data as $key => $each_data) {
 
     $id = $each_data['Id'];
@@ -97,7 +106,7 @@ foreach ($data as $key => $each_data) {
     }
 
     $each_data = array_map("_escape", $each_data);
-    qi("infusionsoft_orders", $each_data);
+    qi("infusionsoft_orders", $each_data, 'replace');
 }
 _l("Import done");
 die;

@@ -40,5 +40,5 @@
         </div>
     </div>
 </div>
-
 <?php include "message.php"; ?>
+<?php include 'genericPopup.php'; ?>

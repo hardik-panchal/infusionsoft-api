@@ -7,6 +7,6 @@
  * @since January 24, 2014
  * 
  */
-$orders = q("select * from infusionsoft_orders order by id desc  ");
+$orders = q("select * from infusionsoft_orders order by id desc limit 0,100  ");
 _cg("page_title", "Infusionsoft Orders");
 ?>
