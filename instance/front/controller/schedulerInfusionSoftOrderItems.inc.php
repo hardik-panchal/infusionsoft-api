@@ -2,7 +2,10 @@
 
 include "initInfusionSoft.php";
 
-$ordersQuery = q("select * from infusionsoft_orders where itemsFetched = '0' order by id desc LIMIT 0,100");
+_errors_on();
+set_time_limit(0);
+
+$ordersQuery = q("select * from infusionsoft_orders where itemsFetched = '0' order by id desc LIMIT 0,500");
 $count = count($ordersQuery);
 
 _l("found {$count} orders to retrieve items");

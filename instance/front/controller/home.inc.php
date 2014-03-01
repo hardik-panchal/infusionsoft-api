@@ -9,8 +9,7 @@
  * @package BePure
  * 
  */
-
-
+_R(lr('infusionsoft_order'));
 
 _cg("page_title", "Dashboard");
 ?>

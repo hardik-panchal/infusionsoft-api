@@ -62,11 +62,24 @@
         }
     }
 
+    var _handler = function() {
+    }
     function doImportInfusion() {
+        var _handler = function() {
+            location.reload();
+        }
         showPopup('<span>Importing orders from infusionsoft...</span><iframe style="border:1px solid #DADADA" src="<?php print _U ?>schedulerInfusionSoftOrders" height=350 width="100%"></iframe>', 'Importing Infusionsoft Orders');
     }
     function doImportInfusionItems() {
+        var _handler = function() {
+            location.reload();
+        }
         showPopup('<span>Importing orders items from infusionsoft...</span><iframe style="border:1px solid #DADADA" src="<?php print _U ?>schedulerInfusionSoftOrderItems" height=350 width="100%"></iframe>', 'Importing Infusionsoft Orders');
+    }
+
+    function doClosePopUp() {
+        _handler()
+        $("#_genericPopup").modal("hide");
     }
 
 </script>
