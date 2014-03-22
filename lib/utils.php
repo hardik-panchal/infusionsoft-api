@@ -263,6 +263,15 @@ function _errors_off() {
 function clearNumber($number) {
     return str_replace(array("-", "(", ")", " "), array("", "", "", ""), $number);
 }
+function GetdataFromdb($array) {
+        $counter = 0;
+        for ($i = 0, $e = count($array); $i < $e; $i++) {
+            if (!empty($array[$i])) {
+                $counter += 1;
+            }
+        }
+        return $counter;
+    }
 
 function formatDate($string) {
     return date("Y-m-d H:i:s", strtotime($string));
